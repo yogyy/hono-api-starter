@@ -12,12 +12,6 @@ export type Env = {
 
 const app = new Hono<{ Bindings: Env }>().basePath("/api");
 
-app.get("/env", async (c, next) => {
-  // const token = c.env.token;
-  const ip = c.req.raw.headers.get("CF-Connecting-IP");
-  return c.json({ ip });
-});
-
 app.get("/product", async (c, next) => {
   const auth = bearerAuth({ token: c.env.token });
   await auth(c, next);
