@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1710691825454,
+      "tag": "0000_special_xorn",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1710693639656,
+      "tag": "0001_true_mentallo",
+      "breakpoints": true
+    }
+  ]
+}

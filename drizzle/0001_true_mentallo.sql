@@ -1,0 +1,1 @@
+ALTER TABLE "hono_product" ADD COLUMN "description" text;
