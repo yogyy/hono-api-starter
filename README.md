@@ -1,6 +1,6 @@
 # hono-app
 
-hono + drizzle + postgresql
+hono + drizzle + postgresql + serverless environment(wrangler)
 
 ```bash
 npm install
