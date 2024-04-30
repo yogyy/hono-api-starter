@@ -1,6 +1,6 @@
 import { bearerAuth } from "hono/bearer-auth";
 import { createFactory } from "hono/factory";
-import { Env } from ".";
+import { Env } from "../types";
 
 const factory = createFactory<{ Bindings: Env }>();
 
