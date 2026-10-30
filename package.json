@@ -1,22 +1,27 @@
 {
+  "name": "first-hono",
+  "type": "module",
   "scripts": {
-    "dev": "wrangler dev src/index.ts",
-    "deploy": "wrangler deploy --minify src/index.ts",
-    "db:generate": "drizzle-kit generate:pg",
-    "db:migrate": "tsx ./src/db/migrate.ts",
-    "db:push": "drizzle-kit push:pg"
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
   },
   "dependencies": {
-    "drizzle-orm": "^0.30.10",
-    "hono": "^3.12.12",
-    "pg": "^8.13.1"
+    "@better-auth/drizzle-adapter": "^1.7.14",
+    "better-auth": "^1.7.14",
+    "dotenv": "^18.0.9",
+    "drizzle-orm": "^1.0.0-rc.5",
+    "hono": "^4.13.14",
+    "wrangler": "^4.156.0"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20231218.0",
-    "@types/pg": "^8.11.10",
-    "dotenv": "^16.4.5",
-    "drizzle-kit": "^0.20.18",
-    "tsx": "^4.7.1",
-    "wrangler": "^3.22.0"
+    "drizzle-kit": "^1.0.0-rc.5",
+    "oxfmt": "^0.75.0",
+    "oxlint": "^1.90.0",
+    "tsx": "^4.23.15"
   }
 }
