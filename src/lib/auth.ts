@@ -1,11 +1,21 @@
-import { bearerAuth } from "hono/bearer-auth";
-import { createFactory } from "hono/factory";
-import { Env } from "../types";
+import { betterAuth } from "better-auth";
+import { drizzleAdapter } from "@better-auth/drizzle-adapter/relations-v2";
+import { getDb } from "../db";
+// import { env } from "cloudflare:workers"; // use this for generate better-auth schema
+import { account, session, verification, user } from "../db/schema";
+import { betterAuthOptions } from "./options";
 
-const factory = createFactory<{ Bindings: Env }>();
-
-export const auth = factory.createMiddleware(async (c, next) => {
-  const auth = bearerAuth({ token: c.env.token });
-
-  await auth(c, next);
-});
+export const auth = (env: Cloudflare.Env) => {
+  return betterAuth({
+    ...betterAuthOptions,
+    database: drizzleAdapter(getDb(env.DB), {
+      provider: "sqlite",
+      schema: {
+        account,
+        session,
+        verification,
+        user,
+      },
+    }),
+  });
+};
